@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="clientes-container">
+
+    <h1>Pedidos</h1>
+
+    {% for mensagem in get_flashed_messages() %}
+
+        <p class="mensagem-erro">{{ mensagem }}</p>
+
+    {% endfor %}
+
+    <div class="clientes-menu">
+        <a href="/pedidos/cadastrar">Criar Pedido</a>
+        <a href="/pedidos/listar">Listar Pedidos</a>
+    </div>
+
+    {% if not pagina %}
+        <img src="{{ url_for('static', filename='imagens/pedidos.svg') }}" class="banner-img">
+    {% endif %}
+
+    <main>
+
+        {% if pagina == 'listar' %}
+            {% for pedido in pedidos %}
+                <div class="cliente-card">
+                    <h3>Pedido #{{ pedido.id }}</h3>
+                    <p>Cliente: {{ pedido.cliente_nome }}</p>
+                    <p>Data: {{ pedido.data }}</p>
+                    <p>Total: {{ pedido.total }}</p>
+                    <p>Status: {{ pedido.status }}</p>
+
+                    <a href="/pedidos/abrir/{{ pedido.id }}">Abrir</a>
+                    <!-- Adicione mais detalhes do pedido aqui -->
+
+                </div> 
+            {% endfor %}
+        {% endif %}
+
+        {% if pagina == 'cadastrar' %}
+            <form method="post" action="/pedidos/cadastrar" class="cliente-form">
+                <select name="cliente_id" id="cliente_id">
+                    <option value="">Selecione um cliente</option>
+                    {% for cliente in clientes %}
+                        <option value="{{ cliente.id }}">{{ cliente.nome }}</option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit">Criar Pedido</button>
+
+
+            </form>
+        {% endif %}
+
+        {% if pagina == 'abrir' %}
+
+            <!-- Dados do pedido -->
+            <div class="cliente-card">
+                <h3>Pedido #{{ pedido.id }}</h3>
+
+                <p>Cliente: {{ pedido.cliente_nome }}</p>
+                <p>Data: {{ pedido.data }}</p>
+                <p>Status: {{ pedido.status }}</p>
+
+                <a href="/pedidos/{{ pedido.id }}/alterar_status">Alterar Status</a>
+
+            </div>
+
+        
+                <!-- Adicionar produto -->
+                <div class="cliente-card">
+                    <h3>Adicionar Produto</h3>
+
+
+                    <form method="POST" action="/pedidos/{{ pedido.id }}/adicionar_produto" class="cliente-form">
+
+                        <label>Produto</label>
+                        <select name="produto_id">
+                            {% for produto in produtos %}
+                                <option value="{{ produto.id }}">
+                                    {{ produto.nome }} - R$ {{ produto.preco }}
+                                </option>
+                            {% endfor %}
+                        </select>
+
+                        <label>Quantidade</label>
+                        <input type="number" name="quantidade" min="1" required>
+
+                        <button type="submit">Adicionar</button>
+
+                    </form>
+                </div>
+
+                <!-- Lista de itens -->
+                <div class="cliente-card">
+                    <h3>Produtos no Pedido</h3>
+
+                    <ul>
+                        {% for item in itens %}
+                            <li>
+                                {{ item.produto_nome }} 
+                                - R$ {{ item.preco }} 
+                                - Quantidade: {{ item.quantidade }}
+
+                                <a href="/pedidos/{{ pedido.id }}/remover_item/{{ item.id }}">
+                                    Remover
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+        {% endif %}
+
+        {% if pagina == 'alterar_status' %}
+
+                <div class="cliente-card">
+                    <h3>Alterar Status do Pedido {{ pedido_id }}</h3>
+
+                    <form action="/pedidos/{{ pedido_id }}/alterar_status" method="POST">
+                        
+                        <select name="status">
+                            <option value="Aberto">Aberto</option>
+                            <option value="Finalizado">Finalizado</option>
+                            <option value="Cancelado">Cancelado</option>
+                        </select>
+
+                        <button type="submit">Confirmar</button>
+
+                    </form>
+                </div>
+
+        {% endif %}
+
+        
+
+      
+
+    </main>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,283 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fonte geral */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Layout geral */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Menu lateral */
+.sidebar {
+    width: 220px;
+    background-color: #0d1b2a;
+    padding: 20px;
+}
+
+/* Título do menu */
+.sidebar h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Links do menu */
+.sidebar a {
+    display: block;
+    background-color: #1b263b;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Hover */
+.sidebar a:hover {
+    background-color: #415a77;
+}
+
+/* Área da direita */
+.content-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Conteúdo */
+.content {
+    padding: 20px;
+}
+
+/* Container ocupa toda largura */
+.clientes-container {
+    width: 100%;
+}
+
+/* Menu horizontal */
+.clientes-menu {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: nowrap;      /* NÃO quebra linha */
+    overflow-x: auto;       /* scroll se não couber */
+}
+
+/* BOTÕES (correção principal) */
+.clientes-menu a {
+    display: inline-block;
+    background-color: #1b263b;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+
+    white-space: nowrap; /* não quebra texto */
+}
+
+/* Hover */
+.clientes-menu a:hover {
+    background-color: #415a77;
+}
+
+.clientes-container h1 {
+    margin-bottom: 20px;
+}
+
+/* Área principal dos clientes */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* espaço entre os clientes */
+}
+
+/* Card do cliente */
+.cliente-card {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #1b263b;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+/* Nome */
+.cliente-card h3 {
+    margin-bottom: 5px;
+    color: #1b263b;
+}
+
+/* Email */
+.cliente-card p {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* Links */
+.cliente-card a {
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Botões (base) */
+.cliente-card a {
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: white;
+    display: inline-block;
+}
+
+/* Editar */
+.cliente-card a:first-of-type {
+    background-color: #0077b6;
+}
+
+.cliente-card a:first-of-type:hover {
+    background-color: #023e8a;
+}
+
+/* Excluir */
+.cliente-card a:last-of-type {
+    background-color: #d00000;
+}
+
+.cliente-card a:last-of-type:hover {
+    background-color: #9d0208;
+}
+
+/* Card do formulário */
+.cliente-form-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #1b263b;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    max-width: 400px;
+}
+
+/* Form em coluna */
+.cliente-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Labels */
+.cliente-form label {
+    font-weight: bold;
+    color: #1b263b;
+}
+
+/* Inputs */
+.cliente-form input {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* Foco */
+.cliente-form input:focus {
+    border-color: #0077b6;
+}
+
+/* Botão */
+.cliente-form button {
+    background-color: #1b263b;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Hover */
+.cliente-form button:hover {
+    background-color: #415a77;
+}
+
+/* Container produtos */
+
+
+/* Menu (botões cadastrar / listar) */
+.produtos-menu {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+
+.produtos-menu a {
+    text-decoration: none;
+    background-color: #1b263b;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    margin-right: 10px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.produtos-menu a:hover {
+    background-color: #415a77;
+}
+
+/* Área principal */
+.produtos-container main {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.produtos-container h1 {
+    margin-bottom: 20px;
+    color: #1b263b;
+}
+
+.cliente-form select {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    background-color: #ffffff;
+    color: #1b263b;
+    font-size: 14px;
+}
+
+.cliente-form select:focus {
+    border-color: #0077b6;
+}
+
+.cliente-card ul li {
+    margin-bottom: 10px;
+    padding: 5px 0;
+}
+
+.mensagem-erro {
+    background-color: #ffdddd;
+    color: red;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.banner-img{
+    display: block;
+    margin: 40px auto;
+    width: 400px;
+}

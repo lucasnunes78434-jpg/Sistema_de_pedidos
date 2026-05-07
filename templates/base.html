@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="PT-BR">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema_de_Pedidos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    
+    <div class="container">
+
+        <aside class="sidebar">
+            <h2>Menu</h2>
+            <a href="/clientes">Clientes</a>
+            <a href="/produtos">Produtos</a>
+            <a href="/pedidos">Pedidos</a>
+        </aside>
+
+        <div class="content-area">
+
+
+
+            <main class="content">
+                {% block content %}
+                {% endblock %}
+            </main>
+
+        </div>
+
+    </div>
+
+    
+</body>
+</html>
